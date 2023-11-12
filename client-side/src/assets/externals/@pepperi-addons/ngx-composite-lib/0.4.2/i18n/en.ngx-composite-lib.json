@@ -1,0 +1,98 @@
+{
+    "COLOR_SETTINGS": {
+        "OPACITY": "opacity",
+        "COLOR": "color"
+    },
+    "SHADOW_SETTINGS": {
+        "TITLE": "Drop shadow",
+        "INTENSITY_SOFT": "Soft",
+        "INTENSITY_REGULAR": "Regular",
+        "INTENSITY_HARD": "Hard",
+        "SIZE": "Shadow size",
+        "INTENSITY": "Shadow intensity"
+    },
+    "DATA_VIEW_BUILDER": {
+        "TYPE_NOT_SUPPORTED": "This data view type is not supported",
+        "AVAILABLE_FIELDS": "Available fields",
+        "MENU_ITEM_KEY_TITLE": "Item key",
+        "MENU_ITEM_VALUE_TITLE": "Item title",
+        "EMPTY_DROP_AREA_TEXT": "Drop here from available fields",
+        "ADD_SEPARATOR": "Add separator",
+        "SEPARATOR_TITLE": "Separator title",
+        "ADD_A_TITLE": "Add a title"
+    },
+    "GENERAL": {
+        "NONE": "None",
+        "XS": "XS",
+        "SM": "SM",
+        "MD": "MD",
+        "LG": "LG",
+        "XL": "XL",
+        "FONT_WEIGHT": {
+            "REGULAR": "Regular",
+            "BOLD": "Bold",
+            "BOLDER": "Bolder"
+        },
+        "WIDTH_SIZE": {
+            "NARROW": "Narrow",
+            "REGULAR": "Regular",
+            "WIDE": "Wide"
+        },
+        "HORIZONTAL_ALIGN": {
+            "LEFT": "Left",
+            "CENTER": "Center",
+            "RIGHT": "Right"
+        },
+        "VERTICAL_ALIGN": {
+            "TOP": "Top",
+            "MIDDLE": "Middle",
+            "BOTTOM": "Bottom"
+        },
+        "RESET_HINT": "Screen sizes support"
+    },
+    "ACTIONS": {
+        "RESET": "Reset",
+        "CLOSE": "Close",
+        "DELETE": "Delete",
+        "EDIT": "Edit"
+    },
+    "MESSAGES": {
+        "DIALOG_INFO_TITLE": "Info",
+        "DIALOG_ERROR_TITLE": "Error",
+        "DIALOG_DELETE_TITLE": "Delete",
+        "DELETE_DIALOG_CONTENT": "Are you sure?",
+        "OPERATION_SUCCESS_CONTENT": "Operation success.",
+        "MAPPED_FIELDS_UNMAPPED_ENTRIES_CONTENT": "There are unmapped entries. ‘Ok’ will remove them from the list.",
+        "MAPPED_FIELDS_SAVED_DIALOG_CONTENT": "The mapped fields are saved.",
+        "DIALOG_ERROR_CONTENT": "General error - please contact your administrator.",
+        "DIALOG_ERROR_DETAILS": "<br/><small> Error details: {{error}} </small>"
+    },
+    "GENERIC_LIST": {
+        "EMPTY_STATE": {
+            "TITLE": "Nothing to see here",
+            "DESCRIPTION": "Add or create an item to populate this list"
+        }
+    },
+    "MANAGE_PARAMETERS": {
+        "TITLE": "Parameters",
+        "ADD_BUTTON_TITLE": "Add parameter",
+        "EMPTY_STATE_TITLE":"No parameters here yet :-(",
+        "EMPTY_STATE_DESCRIPTION":"Click on the \"Add parameter\" button above to get things going",
+        "DELETE_DIALOG_TITLE": "Delete Param {{param_name}}",
+        "DELETE_DIALOG_CONTENT": "Are you sure you want to delete this parameter?",
+        "KEY_TITLE": "Key",
+        "KEY_REGEX_ERROR": "Parameter Key cannot contain special characters on spaces",
+        "DESCRIPTION_TITLE": "Description",
+        "TYPE_TITLE": "Type",
+        "DEFAULT_VALUE_TITLE": "Default Value",
+        "INTERNAL_TITLE": "Internal",
+        "ACCESSIBILITY_TITLE": "Accessibility",
+        "EDIT_FORM_TITLE": "Edit parameter",
+        "INTERNAL_DESCRIPTION": "The Variable Accessibility feature enables you to classify variables as either external or internal, defining their intended usage within this context.\n When marked as external, a parameter is accessible by external components using the picker \n When marked as internal, parameter is hidden from external entities, though available during the context run time",
+        "ADD_FORM_TITLE": "Add parameter"
+    },
+    "FLOW_PICKER_BUTTON": {
+        "CHOOSE_FLOW": "Choose flow"
+    }
+
+}
