@@ -1,5 +1,4 @@
-import { IContext } from "@pepperi-addons/cpi-node/build/cpi-side/events";
-import { AddonVersionString, IClientZipData, IClientZipFilesData, ISymlinkData, ISymlinkFilesData } from 'shared';
+import { IClientZipFilesData, ISymlinkFilesData } from 'shared';
 import { AddonUUID } from "../addon.config.json";
 import fs from 'fs';
 import util from 'util';
@@ -8,7 +7,7 @@ const readFile = util.promisify(fs.readFile);
 const symlink = util.promisify(fs.symlink);
 
 class ClientZipService {
-    
+
     constructor(private addonVersion: string) {
     }
 
@@ -24,7 +23,7 @@ class ClientZipService {
         const fileData = await readFile(`${baseUrl}${relativePath}/addon_package.json`, 'utf8');
         const clientZipData: IClientZipFilesData = JSON.parse(fileData);
         // let clientZipData: IClientZipData = file { Symlinks: [] };
-        
+
         if (clientZipData && clientZipData.Symlinks) {
             for (let index = 0; index < clientZipData.Symlinks.length; index++) {
                 const symlinkData: ISymlinkFilesData = clientZipData.Symlinks[index];
@@ -32,13 +31,13 @@ class ClientZipService {
                 if (symlinkData.ExludedFileName && symlinkData.ExludedFileName.length > 0) {
                     const symlinkName = symlinkData.ExludedFileName;
                     const symlinkTargetPath = `${baseUrl}/Addon/Public/${AddonUUID}/${this.addonVersion}/${symlinkName}`; // symlink.RelativePathToOriginal.replace(AddonVersionString, AddonVersion);
-                    const symlinkPath = `${baseUrl}${relativePath}/${symlinkName}`; 
-                    
+                    const symlinkPath = `${baseUrl}${relativePath}/${symlinkName}`;
+
                     try {
                         await symlink(symlinkTargetPath, symlinkPath);
                     } catch (err) {
-                        console.error("Symlink creation failed: " + err);
-                        throw new Error("Symlink creation failed: " + err);
+                        console.error(`Symlink creation failed: ${ err}`);
+                        throw new Error(`Symlink creation failed: ${ err}`);
                     }
                 }
             }

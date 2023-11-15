@@ -6,7 +6,7 @@ import { IContextWithData } from '@pepperi-addons/cpi-node/build/cpi-side/events
 let addonVersion = '';
 
 export async function load(configuration: any): Promise<void> {
-    
+
     // AddonVersion from ADAL maybe need another option.
     const CPI_NODE_ADDON_UUID = 'bb6ee826-1c6b-4a11-9758-40a46acb69c5';
     const addonData = await pepperi.addons.data.uuid(CPI_NODE_ADDON_UUID).table('addons').key(AddonUUID).get();
@@ -28,7 +28,7 @@ export async function load(configuration: any): Promise<void> {
 
         return res;
     });
-    
+
     return Promise.resolve();
 }
 
