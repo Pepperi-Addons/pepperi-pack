@@ -1,10 +1,10 @@
-import { PapiClient, Relation } from '@pepperi-addons/papi-sdk'
+import { PapiClient } from '@pepperi-addons/papi-sdk'
 import { Client } from '@pepperi-addons/debug-server';
+import { AddonVersionString, IClientZipData } from 'shared';
 
 export class ClientZipService {
 
     papiClient: PapiClient
-    // bundleFileName = '';
 
     constructor(private client: Client) {
         this.papiClient = new PapiClient({
@@ -14,26 +14,22 @@ export class ClientZipService {
             addonSecretKey: client.AddonSecretKey,
             actionUUID: client.ActionUUID
         });
-
-        // this.bundleFileName = `file_${this.client.AddonUUID}`;
     }
 
-    async getClientZipData(clientZipExternals: any): Promise<any> {
-        const currentVersion = '1.0.0'; // TODO: Get from package.json
-        const relativePathToClientAssetsFolderFromAnyAddonFolder = `../../${this.client.AddonUUID}/${currentVersion}/assets/externals`;
-        const res: any = {
+    async getClientZipData(clientZipExternals: any): Promise<IClientZipData> {
+        // This is param (AddonVersionString) will be replace in the CPI endpoint (that create the symlink files).
+        const res: IClientZipData = {
             Symlinks: []
         };
 
-        let externalPrefix = '';
-        let version = '';
-        Object.keys(clientZipExternals).forEach(key => {
-            version = clientZipExternals[key];
-            externalPrefix = `node_modules_${key.replace('@', '').replace('/', '_')}`;
+        let externalPartial = '';
+        let externalVersion = '';
+        Object.keys(clientZipExternals).forEach(externalKey => {
+            externalVersion = clientZipExternals[externalKey];
+            externalPartial = `${externalKey.replace('@', '').replace('/', '_')}`;
 
             res.Symlinks.push({
-                ExternalPrefix: externalPrefix,
-                RelativePathToOriginal: `${relativePathToClientAssetsFolderFromAnyAddonFolder}/${key}/${version}/`
+                PartialFileNameToExlude: externalPartial
             });
         });
 

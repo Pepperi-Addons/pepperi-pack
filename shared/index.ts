@@ -1,0 +1,1 @@
+export * from './pepperi-pack.model';

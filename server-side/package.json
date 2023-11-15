@@ -36,6 +36,7 @@
     "dependencies": {
         "@pepperi-addons/addon-testing-framework": "*",
         "@pepperi-addons/debug-server": "*",
-        "@pepperi-addons/papi-sdk": "*"
+        "@pepperi-addons/papi-sdk": "*",
+        "shared": "file:../shared"
     }
 }

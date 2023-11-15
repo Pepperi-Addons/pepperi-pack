@@ -1,7 +1,7 @@
 {
     "AddonUUID": "4817f4fe-9ff6-435e-9415-96b1142675eb",
     "BaseURL": "http://localhost:8088",
-    "FileName": "addon-cpi.js",
+    "FileName": "pepperi-pack-cpi.js",
     "SessionToken": "{{Session_Token}}",
     "JWT": "{{Jwt_Token}}"
 }
