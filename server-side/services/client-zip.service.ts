@@ -29,7 +29,8 @@ export class ClientZipService {
             externalPartial = `${externalKey.replace('@', '').replace('/', '_')}`;
 
             res.Symlinks.push({
-                PartialFileNameToExlude: externalPartial
+                PartialFileNameToExlude: externalPartial,
+                RelativePathToOriginal: `/${externalKey}/${externalVersion}/`
             });
         });
 

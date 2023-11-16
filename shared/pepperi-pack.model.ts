@@ -6,6 +6,7 @@ export interface IClientZipData {
 }
 export interface ISymlinkData {
     PartialFileNameToExlude: string;
+    RelativePathToOriginal: string;
 }
 
 // The input file data from the client zip handler.
@@ -14,4 +15,5 @@ export interface IClientZipFilesData {
 }
 export interface ISymlinkFilesData {
     ExludedFileName: string;
+    RelativePathToOriginal: string;
 }

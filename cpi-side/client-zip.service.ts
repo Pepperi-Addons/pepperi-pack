@@ -30,7 +30,7 @@ class ClientZipService {
 
                 if (symlinkData.ExludedFileName && symlinkData.ExludedFileName.length > 0) {
                     const symlinkName = symlinkData.ExludedFileName;
-                    const symlinkTargetPath = `${baseUrl}/Addon/Public/${AddonUUID}/${this.addonVersion}/${symlinkName}`; // symlink.RelativePathToOriginal.replace(AddonVersionString, AddonVersion);
+                    const symlinkTargetPath = `${baseUrl}/Addon/Public/${AddonUUID}/${this.addonVersion}/assets/externals${symlinkData.RelativePathToOriginal}${symlinkName}`; // symlink.RelativePathToOriginal.replace(AddonVersionString, AddonVersion);
                     const symlinkPath = `${baseUrl}${relativePath}/${symlinkName}`;
 
                     try {
