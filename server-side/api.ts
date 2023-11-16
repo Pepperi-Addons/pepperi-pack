@@ -1,7 +1,8 @@
 import { Client, Request } from '@pepperi-addons/debug-server'
+import { IClientZipData } from 'shared';
 import { ClientZipService } from './services/client-zip.service';
 
-export async function addon_package(client: Client, request: Request): Promise<any> {
+export async function client_packages(client: Client, request: Request): Promise<IClientZipData> {
     try {
         const service = new ClientZipService(client);
         return service.getClientZipData(request?.body['Dependencies']);
