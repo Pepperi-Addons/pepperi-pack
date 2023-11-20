@@ -22,15 +22,14 @@ class ClientZipService {
         // Read file from path and read the data into fileData variable.
         const fileData = await readFile(`${baseUrl}${relativePath}/addon_package.json`, 'utf8');
         const clientZipData: IClientZipFilesData = JSON.parse(fileData);
-        // let clientZipData: IClientZipData = file { Symlinks: [] };
-
+        
         if (clientZipData && clientZipData.Symlinks) {
             for (let index = 0; index < clientZipData.Symlinks.length; index++) {
                 const symlinkData: ISymlinkFilesData = clientZipData.Symlinks[index];
 
-                if (symlinkData.ExludedFileName && symlinkData.ExludedFileName.length > 0) {
-                    const symlinkName = symlinkData.ExludedFileName;
-                    const symlinkTargetPath = `${baseUrl}/Addon/Public/${AddonUUID}/${this.addonVersion}/assets/externals${symlinkData.RelativePathToOriginal}${symlinkName}`; // symlink.RelativePathToOriginal.replace(AddonVersionString, AddonVersion);
+                if (symlinkData.ExcludedFileName && symlinkData.ExcludedFileName.length > 0) {
+                    const symlinkName = symlinkData.ExcludedFileName;
+                    const symlinkTargetPath = `${baseUrl}/Addon/Public/${AddonUUID}/${this.addonVersion}/assets/externals${symlinkData.AdditionalData.RelativePathToFolder}/${symlinkName}`; // symlink.RelativePathToOriginal.replace(AddonVersionString, AddonVersion);
                     const symlinkPath = `${baseUrl}${relativePath}/${symlinkName}`;
 
                     try {
