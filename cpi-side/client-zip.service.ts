@@ -23,7 +23,7 @@ class ClientZipService {
             // Read file from path and read the data into fileData variable.
             const fileData = await readFile(`${baseUrl}${relativePath}/addon_package.json`, 'utf8');
             const clientZipData: IClientZipFilesData = JSON.parse(fileData);
-            
+
             if (clientZipData && clientZipData.Symlinks) {
                 for (let index = 0; index < clientZipData.Symlinks.length; index++) {
                     const symlinkData: ISymlinkFilesData = clientZipData.Symlinks[index];
