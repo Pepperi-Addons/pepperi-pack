@@ -2,8 +2,8 @@ import { DoBootstrap, Injector, NgModule, Type } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { PepAddonService } from '@pepperi-addons/ngx-lib';
+import { SharedPepNgxLibModule } from './shared-ngx-lib.module';
+import { SharedPepNgxCompositeLibModule } from './shared-ngx-composite-lib.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
@@ -19,33 +19,16 @@ import { config } from './app.config';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        SettingsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: (addonService: PepAddonService) => 
-                    PepAddonService.createMultiTranslateLoader(config.AddonUUID, addonService, ['ngx-lib', 'ngx-composite-lib']),
-                deps: [PepAddonService]
-            }
-        }),
-        AppRoutingModule,
+        // SharedPepNgxLibModule,
+        // SharedPepNgxCompositeLibModule,
+        // SettingsModule,
+        // AppRoutingModule,
     ],
     providers: [],
     bootstrap: [
-        // AppComponent
     ]
 })
-export class AppModule implements DoBootstrap {
-    constructor(
-        private injector: Injector,
-        translate: TranslateService,
-        private pepAddonService: PepAddonService
-    ) {
-        this.pepAddonService.setDefaultTranslateLang(translate);
-    }
-
-    ngDoBootstrap() {
-        this.pepAddonService.defineCustomElement(`settings-element-${config.AddonUUID}`, SettingsComponent, this.injector);
-    }
+export class AppModule {
+    // Do nothing.
 }
 
