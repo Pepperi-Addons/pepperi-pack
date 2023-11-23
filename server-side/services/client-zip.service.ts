@@ -9,7 +9,6 @@ export class ClientZipService {
         '@angular/animations/14.0.2',
         '@angular/cdk/14.0.2',
         '@angular/common/14.0.2',
-        '@angular/compiler/14.0.2',
         '@angular/core/14.0.2',
         '@angular/elements/14.0.2',
         '@angular/flex-layout/14.0.0',
@@ -36,7 +35,7 @@ export class ClientZipService {
         'ngx-translate-multi-http-loader/3.0.0',
         'ngx-virtual-scroller/4.0.3',
         'quill/1.3.7',
-        'rxjs/7.5.0',
+        'rxjs/7.8.0'
     ];
 
     constructor(private client: Client) {
