@@ -64,20 +64,20 @@ export class ClientZipService {
             externalVersion = clientZipExternals[externalKey];
             externalPartial = `${externalKey.replace('@', '').replace('/', '_')}`;
 
-            const relativePathToFolder = `/${externalKey}/${externalVersion}`;
+            const pathToFolder = `${externalKey}/${externalVersion}`;
 
             // Check if this folder exist in assets, then push it to the array.
-            const externalFolderExist = this.doesFolderExist(relativePathToFolder);
+            const externalFolderExist = this.doesFolderExist(pathToFolder);
 
             if (externalFolderExist) {
                 res.Symlinks.push({
                     PartialFileNameToExclude: `node_modules_${externalPartial}`,
                     AdditionalData: {
-                        RelativePathToFolder: relativePathToFolder
+                        RelativePathToFolder: `/${pathToFolder}`
                     }
                 });
             } else {
-                throw new Error(`Dependencies doesn't supported - ${externalFolderExist}`);
+                throw new Error(`Dependencies doesn't supported - ${externalKey} with version ${externalVersion}`);
             }
         });
 
