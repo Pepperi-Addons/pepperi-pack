@@ -17,6 +17,6 @@ module.exports = {
     ...webpackConfig,
     output: {
         ...webpackConfig.output,
-        uniqueName: blockName,
+        uniqueName: 'block',
     },
 };
