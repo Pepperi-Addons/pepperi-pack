@@ -54,6 +54,8 @@ export class ClientZipService {
     }
 
     async getClientZipData(clientZipExternals: any): Promise<IClientZipData> {
+        console.log(`clientZipExternals input - ${JSON.stringify(clientZipExternals)}`);
+
         const res: IClientZipData = {
             Symlinks: []
         };
@@ -63,7 +65,8 @@ export class ClientZipService {
         Object.keys(clientZipExternals).forEach(externalKey => {
             externalVersion = clientZipExternals[externalKey];
             externalPartial = `${externalKey.replace('@', '').replace('/', '_')}`;
-
+            
+            console.log(`externalKey - ${externalKey} with version ${externalVersion}`);
             const pathToFolder = `${externalKey}/${externalVersion}`;
 
             // Check if this folder exist in assets, then push it to the array.

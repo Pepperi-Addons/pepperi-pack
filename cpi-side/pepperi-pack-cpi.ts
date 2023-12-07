@@ -14,7 +14,7 @@ export async function load(configuration: any): Promise<void> {
     if (addonData && addonData.Version) {
         addonVersion = addonData.Version;
     }
-
+    
     pepperi.events.intercept('AfterAddonFilesUnzipped' as any, {}, async (data: IContextWithData): Promise<any> => {
         // debugger;
         const res = { symlinksFilesCreated: false };

@@ -8,6 +8,7 @@
 		"build": "cd ./shared && npm run build && cd .. && cd ./client-side && npm run build && cd .. && cd ./cpi-side && npm run build && cd .. && cd ./server-side && npm run build && cd ..",
 		"init": "cd ./shared && npm i && cd .. && cd ./client-side && npm install --force && cd .. && cd ./cpi-side && npm install --force && cd .. && cd ./server-side && npm install --force && cd ..",
 		"publish-addon": "npm run build && publish-addon",
+		"pub-addon": "publish-addon",
 		"cpi-publish-addon": "cd ./cpi-side && npm run build:debug && cd .. && cpi-node-debug"
 	},
 	"keywords": [],
