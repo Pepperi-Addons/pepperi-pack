@@ -1,24 +1,24 @@
 import { DoBootstrap, Injector, NgModule, Type } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { SharedPepNgxLibModule } from './shared-ngx-lib.module';
-import { SharedPepNgxCompositeLibModule } from './shared-ngx-composite-lib.module';
+// import { SharedPepNgxLibModule } from './shared-ngx-lib.module';
+// import { SharedPepNgxCompositeLibModule } from './shared-ngx-composite-lib.module';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routes';
+// import { AppComponent } from './app.component';
+// import { AppRoutingModule } from './app.routes';
 
-import { SettingsComponent, SettingsModule } from './settings';
+// import { SettingsComponent, SettingsModule } from './settings';
 
-import { config } from './app.config';
+// import { config } from './app.config';
 
 @NgModule({
     declarations: [
-        AppComponent,
+        // AppComponent,
     ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
+        // BrowserModule,
+        // BrowserAnimationsModule,
         // SharedPepNgxLibModule,
         // SharedPepNgxCompositeLibModule,
         // SettingsModule,

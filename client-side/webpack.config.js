@@ -17,6 +17,6 @@ module.exports = {
     ...webpackConfig,
     output: {
         ...webpackConfig.output,
-        uniqueName: 'block',
+        uniqueName: blockName//'__PEPPERI_PACK__',
     },
 };

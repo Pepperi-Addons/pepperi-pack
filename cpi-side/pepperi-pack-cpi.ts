@@ -17,13 +17,18 @@ export async function load(configuration: any): Promise<void> {
     
     pepperi.events.intercept('AfterAddonFilesUnzipped' as any, {}, async (data: IContextWithData): Promise<any> => {
         // debugger;
-        const res = { symlinksFilesCreated: false };
-        const relativePath = data.RelativePath || '';
+        const res: any = { exludedFilesRetured: false, error: undefined };
 
-        if (relativePath) {
-            const service = new ClientZipService(addonVersion);
-            await service.createSymlinksFiles(relativePath);
-            res.symlinksFilesCreated = true;
+        try {
+            const relativePath = data.RelativePath || '';
+            const addonUUID = data.AddonUUID || '';
+            if (addonUUID && relativePath) {
+                const service = new ClientZipService(addonVersion);
+                await service.copyExcludedFiles(addonUUID, relativePath);
+                res.exludedFilesRetured = true;
+            }
+        } catch (err) {
+            res.error = err;
         }
 
         return res;
