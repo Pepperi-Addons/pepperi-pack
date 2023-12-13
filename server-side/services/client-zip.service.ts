@@ -52,7 +52,6 @@ export class ClientZipService {
         { folder: '@ngx-translate/core/14', installedVersion: '14.0.0' },
         { folder: '@pepperi-addons/ngx-composite-lib/0', installedVersion: '0.4.2' },
         { folder: '@pepperi-addons/ngx-lib/0', installedVersion: '0.4.2' },
-        { folder: '@tweenjs/tween.js/17', installedVersion: '17.1.1' },
         { folder: 'hammerjs/2', installedVersion: '2.0.8' },
         { folder: 'moment/2', installedVersion: '2.27.0' },
         { folder: 'ng-gallery/5', installedVersion: '5.0.0' },
@@ -89,7 +88,7 @@ export class ClientZipService {
         let externalVersion = '';
         Object.keys(clientZipExternals).forEach(externalKey => {
             externalVersion = clientZipExternals[externalKey];
-            externalPartial = `${externalKey.replace('@', '').replace('/', '_').replace('.', '_')}`;
+            externalPartial = `${externalKey.replace('@', '').replace('/', '_')}`;
             
             console.log(`externalKey - ${externalKey} with version ${externalVersion}`);
             const pathToFolder = `${externalKey}/${externalVersion}`;

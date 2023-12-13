@@ -2,6 +2,8 @@ import { DoBootstrap, Injector, NgModule, Type } from '@angular/core';
 // import { BrowserModule } from '@angular/platform-browser';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// import { SharedMaterialModule } from './shared-material.module';
+
 // import { SharedPepNgxLibModule } from './shared-ngx-lib.module';
 // import { SharedPepNgxCompositeLibModule } from './shared-ngx-composite-lib.module';
 
@@ -9,8 +11,6 @@ import { DoBootstrap, Injector, NgModule, Type } from '@angular/core';
 // import { AppRoutingModule } from './app.routes';
 
 // import { SettingsComponent, SettingsModule } from './settings';
-
-// import { config } from './app.config';
 
 @NgModule({
     declarations: [
@@ -21,6 +21,7 @@ import { DoBootstrap, Injector, NgModule, Type } from '@angular/core';
         // BrowserAnimationsModule,
         // SharedPepNgxLibModule,
         // SharedPepNgxCompositeLibModule,
+        // SharedMaterialModule,
         // SettingsModule,
         // AppRoutingModule,
     ],

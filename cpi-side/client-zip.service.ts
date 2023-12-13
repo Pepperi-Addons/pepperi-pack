@@ -7,6 +7,7 @@ const existFile = util.promisify(fs.exists);
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
 const symlink = util.promisify(fs.symlink);
+const copyFile = util.promisify(fs.copyFile);
 
 class ClientZipService {
 
@@ -53,7 +54,7 @@ class ClientZipService {
     // }
 
     // Copy the excluded files back to the client zip folder (from the pepperi_pack addon).
-    async copyExcludedFiles(addonUUIDToCopyFiles: string, relativePath: string): Promise<void> {
+    async copyExcludedFiles(inputAddonUUID: string, relativePath: string): Promise<void> {
         const baseUrl = await pepperi.files.rootDir();//.baseURL(); // file://localhost:8088/files
         const filePath = `${baseUrl}${relativePath}/addon_package.json`;
 
@@ -61,9 +62,12 @@ class ClientZipService {
             // Read file from path and read the data into fileData variable.
             const fileData = await readFile(filePath, 'utf8');
             const clientZipData: IClientZipFilesData = JSON.parse(fileData);
-
+            
             if (clientZipData && clientZipData.Symlinks) {
                 let fileDataToCopy;
+                const pepperiPackAddonUUIDToFind = AddonUUID.replace(/-/g, '_');
+                const inputAddonUUIDToSet = inputAddonUUID.replace(/-/g, '_');
+                const regex = new RegExp(`file_${pepperiPackAddonUUIDToFind}`, 'g');
 
                 for (let index = 0; index < clientZipData.Symlinks.length; index++) {
                     const symlinkData: ISymlinkFilesData = clientZipData.Symlinks[index];
@@ -73,14 +77,24 @@ class ClientZipService {
                         const filePathToCopyFrom = `${baseUrl}/Addon/Public/${AddonUUID}/${this.addonVersion}/assets/externals${symlinkData.AdditionalData.RelativePathToFolder}/${symlinkName}`; // symlink.RelativePathToOriginal.replace(AddonVersionString, AddonVersion);
                         const filePathToCopyTo = `${baseUrl}${relativePath}/${symlinkName}`;
                         
-                        fileDataToCopy = await readFile(filePathToCopyFrom, 'utf8');
-                        
                         try {
-                            var re = new RegExp(`file_${AddonUUID}`, "g");
-                            await writeFile(filePathToCopyTo, fileDataToCopy.replace(re, `file_${addonUUIDToCopyFiles}`), 'utf8');
+                            fileDataToCopy = await readFile(filePathToCopyFrom, 'utf8');
+                            await writeFile(filePathToCopyTo, fileDataToCopy.replace(regex, `file_${inputAddonUUIDToSet}`), 'utf8');
                         } catch (err) {
                             console.error(`Write file ${filePathToCopyTo} failed: ${err}`);
                         }
+
+                        // try {
+                        //     await copyFile(filePathToCopyFrom, filePathToCopyTo);
+                        //     fileDataToCopy = await readFile(filePathToCopyTo, 'utf8');
+                        //     // fileDataToCopy = await readFile(filePathToCopyTo).toString();
+                        //     var re = new RegExp(`file_${AddonUUID}`, "g");
+                        //     var tmp = fileDataToCopy.split(`file_${AddonUUID.replace(/-/g, '_')}`);// replace(`%file_${AddonUUID}%`, `file_${addonUUIDToCopyFiles}`);
+                        //     var tmp2 = tmp.join(`file_${addonUUIDToCopyFiles}`);
+                        //     await writeFile(filePathToCopyTo, tmp, 'utf8');
+                        // } catch (err) {
+                        //     console.error(`Write file ${filePathToCopyTo} failed: ${err}`);
+                        // }
                     }
                 }
             }
