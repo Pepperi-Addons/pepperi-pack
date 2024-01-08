@@ -54,7 +54,7 @@
                             "namedChunks": true
                         },
                         "production": {
-                            "optimization": true,
+                            "optimization": false,
                             "sourceMap": false,
                             "namedChunks": true,
                             "extractLicenses": true,

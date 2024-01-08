@@ -1,38 +1,46 @@
 import '@pepperi-addons/cpi-node'
 import ClientZipService from './client-zip.service';
 import { AddonUUID } from "../addon.config.json";
-import { IContextWithData } from '@pepperi-addons/cpi-node/build/cpi-side/events';
-
-let addonVersion = '';
 
 export async function load(configuration: any): Promise<void> {
+    // debugger;
+    // const service = new ClientZipService();
+    // service.extract7zFiles();
 
-    // AddonVersion from ADAL maybe need another option.
-    const CPI_NODE_ADDON_UUID = 'bb6ee826-1c6b-4a11-9758-40a46acb69c5';
-    const addonData = await pepperi.addons.data.uuid(CPI_NODE_ADDON_UUID).table('addons').key(AddonUUID).get();
-
-    if (addonData && addonData.Version) {
-        addonVersion = addonData.Version;
-    }
-    
-    pepperi.events.intercept('AfterAddonFilesUnzipped' as any, {}, async (data: IContextWithData): Promise<any> => {
-        // debugger;
-        const res: any = { exludedFilesRetured: false, error: undefined };
-
+    pepperi.events.intercept('SyncTerminated' as any, {}, async (data: any): Promise<any> => {
+        // const res: any = { exludedFilesRetured: false, error: undefined };
+// debugger;
         try {
-            const relativePath = data.RelativePath || '';
-            const addonUUID = data.AddonUUID || '';
-            if (addonUUID && relativePath) {
-                const service = new ClientZipService(addonVersion);
-                await service.copyExcludedFiles(addonUUID, relativePath);
-                res.exludedFilesRetured = true;
-            }
+            const service = new ClientZipService();
+            // prepareAddonsFiles() is called asynchronously without waiting for it because it takes a long time
+            service.prepareAddonsFiles();
+            // service.extract7zFiles();
+
         } catch (err) {
-            res.error = err;
+            // res.error = err;
         }
 
-        return res;
+        // return res;
     });
+
+    // pepperi.events.intercept('AfterAddonFilesUnzipped' as any, {}, async (data: IContextWithData): Promise<any> => {
+    //     debugger;
+    //     const res: any = { exludedFilesRetured: false, error: undefined };
+
+    //     try {
+    //         const relativePath = data.RelativePath || '';
+    //         const addonUUID = data.AddonUUID || '';
+    //         if (addonUUID && relativePath) {
+    //             const service = new ClientZipService(addonVersion);
+    //             await service.copyExcludedFiles(addonUUID, relativePath);
+    //             res.exludedFilesRetured = true;
+    //         }
+    //     } catch (err) {
+    //         res.error = err;
+    //     }
+
+    //     return res;
+    // });
 
     return Promise.resolve();
 }

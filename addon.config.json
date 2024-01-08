@@ -1,6 +1,6 @@
 {
   "AddonUUID": "4817f4fe-9ff6-435e-9415-96b1142675eb",
-  "AddonVersion": "1.1.2",
+  "AddonVersion": "1.1.5",
   "DebugPort": 4500,
   "WebappBaseUrl": "https://app.sandbox.pepperi.com",
   "DefaultEditor": "main",
@@ -15,13 +15,13 @@
   "PublishConfig": {
     "ClientStack": "ng14",
     "Dependencies": {
-      "cpi_node": "1.5.33"
+      "cpi_node": "1.6.10"
     },
     "CPISide": [
       "pepperi-pack-cpi.ts"
     ]
   },
   "AddonPackage": {
-    "ClientZip": true
+    "ClientZip": false
   }
 }
