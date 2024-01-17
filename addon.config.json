@@ -15,7 +15,7 @@
   "PublishConfig": {
     "ClientStack": "ng14",
     "Dependencies": {
-      "cpi_node": "1.6.10"
+      "cpi_node": "1.5.58"
     },
     "CPISide": [
       "pepperi-pack-cpi.ts"
